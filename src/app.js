@@ -1,6 +1,7 @@
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import userRoutes from './routes/userRoutes.js';
+import workRoutes from './routes/workRoutes.js';
 import errorHandler from './middlewares/errorHandler.js';
 
 const app = express();
@@ -13,7 +14,10 @@ app.use('/api/users', userRoutes);
 
 app.use(errorHandler);
 
-const PORT = process.env.PORT || 3000;
+app.use('/works', workRoutes);
+
+const PORT = process.env.PORT || 3001;
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

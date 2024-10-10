@@ -13,5 +13,12 @@
     "postgresql": "^0.0.1",
     "prisma": "^5.20.0",
     "uuid": "^10.0.0"
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon app.js",
+    "start": "node src/app.js",
+    "seed": "node products_data/seed.js",
+    "migrate-dev": "npx prisma migrate dev"
   }
 }

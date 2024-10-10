@@ -60,14 +60,14 @@ model User {
 }
 
 model Challenge {
-  id              Int           @id @default(autoincrement())
-  title           String        @db.VarChar(200)
+  id              Int            @id @default(autoincrement())
+  title           String         @db.VarChar(200)
   field           ChallengeField
   docType         DocType
-  description     String        @db.Text
-  docUrl          String        @db.VarChar(200)
+  description     String         @db.Text
+  docUrl          String         @db.VarChar(200)
   deadline        DateTime
-  progress        Boolean       @default(false)
+  progress        Boolean        @default(false)
   participates    Int?
   maxParticipates Int?
   applications    Application[]
@@ -76,15 +76,15 @@ model Challenge {
 }
 
 model Application {
-  id                   Int               @id @default(autoincrement())
-  user                 User              @relation(fields: [userId], references: [id])
-  userId               Int
-  challenge            Challenge         @relation(fields: [challengeId], references: [id])
-  challengeId          Int
-  status               ApplicationStatus @default(WAITING)
-  aplliedAt            DateTime          @default(now())
-  invalidationComment  String?           @db.VarChar(200)
-  invalidatedAt        DateTime?
+  id                  Int               @id @default(autoincrement())
+  user                User              @relation(fields: [userId], references: [id])
+  userId              Int
+  challenge           Challenge         @relation(fields: [challengeId], references: [id])
+  challengeId         Int
+  status              ApplicationStatus @default(WAITING)
+  aplliedAt           DateTime          @default(now())
+  invalidationComment String?           @db.VarChar(200)
+  invalidatedAt       DateTime?
 }
 
 model Participate {
@@ -96,18 +96,18 @@ model Participate {
 }
 
 model Work {
-  id              Int       @id @default(autoincrement())
-  user            User      @relation(fields: [userId], references: [id])
-  userId          Int
-  challenge       Challenge @relation(fields: [challengeId], references: [id])
-  challengeId     Int
-  description     String?   @db.Text
-  lastModifiedAt  DateTime  @updatedAt
-  isSubmitted     Boolean   @default(false)
-  submittedAt     DateTime?
-  feedbacks       Feedback[]
-  like            Like?
-  likeCount       Int       @default(0)
+  id             Int        @id @default(autoincrement())
+  user           User       @relation(fields: [userId], references: [id])
+  userId         Int
+  challenge      Challenge  @relation(fields: [challengeId], references: [id])
+  challengeId    Int
+  description    String?    @db.Text
+  lastModifiedAt DateTime   @updatedAt
+  isSubmitted    Boolean    @default(false)
+  submittedAt    DateTime?
+  feedbacks      Feedback[]
+  like           Like?
+  likeCount      Int        @default(0)
 }
 
 model Feedback {
